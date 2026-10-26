@@ -10,14 +10,14 @@ description = "Preregistration and registered-report validation exemplar"
 authors = [{name = "Daniel Ari Friedman", email = "daniel@activeinference.institute"}]
 requires-python = ">=3.10"
 dependencies = [
-    "matplotlib>=3.8.0",
+    "matplotlib>=3.10.0",
     "pillow>=12.3.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4.0",
-    "pytest-cov>=4.1.0",
+    "pytest>=9.0.0",
+    "pytest-cov>=7.0.0",
 ]
 
 [tool.pytest.ini_options]
