@@ -6,8 +6,7 @@ script only handles argument parsing and file I/O. Figures are written to
 a machine-readable copy of the executed analysis is written to ``output/data/``.
 Run headless from the repository root:
 
-    MPLBACKEND=Agg uv run python \
-        projects/templates/template_registered_report/scripts/generate_figures.py
+    MPLBACKEND=Agg uv run python scripts/generate_figures.py
 """
 
 from __future__ import annotations

@@ -10,7 +10,7 @@ demonstration data and renders the four manuscript figures into
 `output/data/demo_analysis.json`:
 
 ```bash
-MPLBACKEND=Agg uv run python projects/templates/template_registered_report/scripts/generate_figures.py
+MPLBACKEND=Agg uv run python scripts/generate_figures.py
 ```
 
 `generate_review_artifacts.py` creates deterministic registered-report review
@@ -18,5 +18,5 @@ artifacts from `data/example_registration.json`: frozen registration, review
 packet, deviation ledger, sensitivity findings, and adherence report.
 
 ```bash
-uv run python projects/templates/template_registered_report/scripts/generate_review_artifacts.py
+uv run python scripts/generate_review_artifacts.py
 ```

@@ -16,9 +16,9 @@ Additional locations are config-declared publication evidence; the central index
 
 <!-- END:PUBLICATION_INDEX -->
 
-Use this exemplar for preregistered reports or replication projects outside the monorepo.
+Standalone checkout of `projects/templates/template_registered_report`; run its suite locally with `uv sync --extra dev` and `uv run pytest tests --cov=src --cov-fail-under=90`. Use this exemplar for preregistered reports or replication projects outside the monorepo.
 
-1. Copy with `uv run python scripts/audit/copy_exemplar.py --source templates/template_registered_report --dest <destination> --new-name <project_slug>`.
+1. Copy from the template monorepo ([docxology/template](https://github.com/docxology/template)) with `uv run python scripts/audit/copy_exemplar.py --source templates/template_registered_report --dest <destination> --new-name <project_slug>`; the copier is monorepo-only and is not shipped here.
 2. Replace `data/example_registration.json`.
 3. Record registered-report stage metadata, ethics-review status, and sensitivity analyses.
 4. Update `manuscript/config.yaml`, `domain_profile.yaml`, and `experiment_plan.yaml`.

@@ -25,23 +25,25 @@ auditable.
 
 ## Running
 
-This exemplar runs via the template monorepo from the repository root, e.g.
-(per root `README.md`):
+From this repository root (per root `README.md`):
 
 ```bash
-uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only
+uv sync --extra dev
+uv run pytest tests
 ```
+
+Inside the template monorepo the same project runs from the monorepo root with
+`uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only`.
 
 Forks: copy `manuscript/config.yaml.example` to `manuscript/config.yaml`.
 
 ## Testing
 
 Project pytest config lives in `pyproject.toml` (`testpaths = ["tests"]`,
-`pythonpath = [".", "src"]`). From the monorepo root:
+`pythonpath = [".", "src"]`). From this repository root:
 
 ```bash
-uv run pytest projects/templates/template_registered_report/tests/ \
-  --cov=projects/templates/template_registered_report/src
+uv run pytest tests --cov=src --cov-fail-under=90
 ```
 
 ## Documentation maintenance

@@ -23,5 +23,6 @@ never mock the validators, the demonstration analysis, or the figure renderers.
 Run one project directory per pytest invocation from the repository root:
 
 ```bash
-uv run pytest projects/templates/template_registered_report/tests --cov=projects/templates/template_registered_report/src --cov-fail-under=90
+uv sync --extra dev
+uv run pytest tests --cov=src --cov-fail-under=90
 ```

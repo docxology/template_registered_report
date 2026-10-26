@@ -17,8 +17,7 @@ functions in `src/registered_report/` — the figure-data helpers in
 Regenerate from the repository root:
 
 ```bash
-MPLBACKEND=Agg uv run python \
-    projects/templates/template_registered_report/scripts/generate_figures.py
+MPLBACKEND=Agg uv run python scripts/generate_figures.py
 ```
 
 These figures are embedded directly by the manuscript sections under

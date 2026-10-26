@@ -9,7 +9,8 @@ tags: [exemplar, preregistration, replication, registered-report]
 
 # template-registered-report
 
-Load this skill when working inside `projects/templates/template_registered_report/`.
+Load this skill when working inside this repository (standalone mirror of
+`projects/templates/template_registered_report/`).
 
 ## When to Use
 
@@ -20,9 +21,12 @@ Load this skill when working inside `projects/templates/template_registered_repo
 ## Quick Reference
 
 ```bash
-uv run pytest projects/templates/template_registered_report/tests --cov=projects/templates/template_registered_report/src --cov-fail-under=90
-uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only
+uv sync --extra dev
+uv run pytest tests --cov=src --cov-fail-under=90
 ```
+
+Inside the template monorepo, from the monorepo root:
+`uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only`.
 
 ## Pitfalls
 

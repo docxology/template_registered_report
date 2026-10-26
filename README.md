@@ -2,7 +2,7 @@
 
 `template_registered_report` is a public exemplar for registered reports, preregistration, replication, and robustness-audit workflows. It makes the planned analysis, frozen hypothesis ledger, deviations, and post-run claims auditable.
 
-Run via the template monorepo from the repository root with `uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only`. Copy `manuscript/config.yaml.example` to `manuscript/config.yaml` in forks and keep template integrity checks green.
+This repository is a standalone checkout: from its root, `uv sync --extra dev` then `uv run pytest tests`. The same project runs inside the template monorepo from the monorepo root with `uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only`. Copy `manuscript/config.yaml.example` to `manuscript/config.yaml` in forks and keep template integrity checks green.
 
 ## When to use this template
 
@@ -61,8 +61,11 @@ mapping, the analysis-plan workflow DAG, the deviation-ledger timeline, and the
 seeded permutation-test result. Regenerate with:
 
 ```bash
-MPLBACKEND=Agg uv run python projects/templates/template_registered_report/scripts/generate_figures.py
+MPLBACKEND=Agg uv run python scripts/generate_figures.py
 ```
+
+Inside the template monorepo the same script is
+`projects/templates/template_registered_report/scripts/generate_figures.py`.
 
 ## Configuration
 
@@ -70,10 +73,11 @@ Primary configuration lives in `manuscript/config.yaml`; forkable defaults live 
 
 ## Tests
 
-Run:
+From the repository root:
 
 ```bash
-uv run pytest projects/templates/template_registered_report/tests --cov=projects/templates/template_registered_report/src --cov-fail-under=90
+uv sync --extra dev
+uv run pytest tests --cov=src --cov-fail-under=90
 ```
 
 ## Outputs and validation
@@ -86,4 +90,4 @@ Confirmatory claims must map to registered hypotheses and outcomes. Exploratory 
 
 ## Fork guidance
 
-Use `scripts/audit/copy_exemplar.py` for clean forks. Replace the registration fixture, update the analysis plan, record ethics/stage metadata, and rerun tests before rendering.
+Use the template monorepo's `scripts/audit/copy_exemplar.py` ([docxology/template](https://github.com/docxology/template)) for clean forks; this standalone checkout ships no copier. Replace the registration fixture, update the analysis plan, record ethics/stage metadata, and rerun tests before rendering.

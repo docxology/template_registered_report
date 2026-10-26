@@ -22,5 +22,6 @@ Real-data, no-mock tests across four files:
 Run from the repository root:
 
 ```bash
-uv run pytest projects/templates/template_registered_report/tests --cov=projects/templates/template_registered_report/src --cov-fail-under=90
+uv sync --extra dev
+uv run pytest tests --cov=src --cov-fail-under=90
 ```

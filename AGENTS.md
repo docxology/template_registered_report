@@ -6,15 +6,24 @@ Configuration lives in `manuscript/config.yaml`; preregistration fixtures live i
 
 ## Commands
 
+Standalone checkout (this repository root):
+
 ```bash
-uv run pytest projects/templates/template_registered_report/tests --cov=projects/templates/template_registered_report/src --cov-fail-under=90
+uv sync --extra dev
+uv run pytest tests --cov=src --cov-fail-under=90
+MPLBACKEND=Agg uv run python scripts/generate_figures.py
+```
+
+Monorepo-only, from the template monorepo root (paths assume the
+`projects/templates/template_registered_report/` location):
+
+```bash
 uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only
 uv run python scripts/pipeline/stage_04_validate.py --project templates/template_registered_report
-MPLBACKEND=Agg uv run python projects/templates/template_registered_report/scripts/generate_figures.py
 ```
 
 ## Contracts and boundaries
 
 Do not let post-run result prose rewrite preregistered intent. Keep confirmatory claims, deviations, sensitivity checks, ethics/stage metadata, and exploratory claims separated in source, tests, review packets, and manuscript.
 
-Decision memory and verifier hardening follow [`docs/rules/memory_and_decision_records.md`](../../../docs/rules/memory_and_decision_records.md): use nearby `WHY:` comments only for surprising local choices, keep volatile counts generated, and add negative controls for verifier-like gates.
+Decision memory and verifier hardening follow the template monorepo's `docs/rules/memory_and_decision_records.md` (monorepo-only path; it does not resolve in this standalone checkout): use nearby `WHY:` comments only for surprising local choices, keep volatile counts generated, and add negative controls for verifier-like gates.
