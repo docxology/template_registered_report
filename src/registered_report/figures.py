@@ -49,6 +49,7 @@ class RegisteredReportFigureSpec:
     label: str
     filename: str
     caption: str
+    alt_text: str
     generated_by: str
 
 
@@ -58,24 +59,28 @@ REGISTERED_REPORT_FIGURE_SPECS: tuple[RegisteredReportFigureSpec, ...] = (
         label="fig:hypothesis_map",
         filename="hypothesis_map.png",
         caption="Registered hypothesis-to-outcome-to-analysis mapping.",
+        alt_text="A four-column flow links each registered hypothesis to its outcome, measure, and planned analysis.",
         generated_by="registered_report.figures.plot_hypothesis_map",
     ),
     RegisteredReportFigureSpec(
         label="fig:analysis_dag",
         filename="analysis_dag.png",
         caption="Registered analysis workflow and pre-results lock boundary.",
+        alt_text="Workflow boxes run from registration freeze to interpretation. A dashed line separates locked steps from post-results steps.",
         generated_by="registered_report.figures.plot_analysis_dag",
     ),
     RegisteredReportFigureSpec(
         label="fig:deviation_timeline",
         filename="deviation_timeline.png",
         caption="Timeline of registered decisions and documented deviations.",
+        alt_text="A timeline distinguishes registered steps, documented deviations, and undocumented deviations.",
         generated_by="registered_report.figures.plot_deviation_timeline",
     ),
     RegisteredReportFigureSpec(
         label="fig:permutation_result",
         filename="permutation_result.png",
         caption="Seeded permutation null distribution and observed registered statistic.",
+        alt_text="A histogram shows the permutation null distribution, with lines marking the observed treatment-control difference and its negative.",
         generated_by="registered_report.figures.plot_permutation_result",
     ),
 )
