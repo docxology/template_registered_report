@@ -207,9 +207,9 @@ class TestManuscriptProseMatchesLiveAnalysis:
         n_extreme_str = str(summary["n_at_least_as_extreme"])
 
         for relative_path, expected_tokens in {
-            "manuscript/00_abstract.md": (difference_str, p_value_str),
-            "manuscript/04_results.md": (p_value_str, difference_str, n_permutations_str, n_extreme_str),
-            "manuscript/06_discussion.md": (difference_str, p_value_str),
+            "docs/manuscript/00_abstract.md": (difference_str, p_value_str),
+            "docs/manuscript/04_results.md": (p_value_str, difference_str, n_permutations_str, n_extreme_str),
+            "docs/manuscript/06_discussion.md": (difference_str, p_value_str),
         }.items():
             text = (PROJECT_ROOT / relative_path).read_text(encoding="utf-8")
             for token in expected_tokens:

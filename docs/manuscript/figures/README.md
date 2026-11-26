@@ -14,12 +14,6 @@ functions in `src/registered_report/` — the figure-data helpers in
 - `permutation_result.png` — seeded permutation null distribution and observed
   difference for the demonstration study (`fig:permutation_result`).
 
-Regenerate from the repository root:
-
-```bash
-MPLBACKEND=Agg uv run python scripts/generate_figures.py
-```
-
-These figures are embedded directly by the manuscript sections under
-`manuscript/`. Do not hand-edit the PNGs; change the source functions or the
-registration fixture and regenerate.
+Follow the [evidence generation guide](../../rendering.md#regenerate-the-evidence)
+to regenerate the figures after changing the registration fixture or the
+rendering functions.

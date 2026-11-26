@@ -45,7 +45,7 @@ def _load_script_module() -> ModuleType:
 def _copy_project_inputs(tmp_path: Path) -> tuple[Path, Path]:
     project = tmp_path / "project"
     shutil.copytree(PROJECT_ROOT / "data", project / "data")
-    shutil.copytree(PROJECT_ROOT / "manuscript", project / "manuscript")
+    shutil.copytree(PROJECT_ROOT / "docs" / "manuscript", project / "docs" / "manuscript")
     return project, project / "data" / "example_registration.json"
 
 
@@ -55,7 +55,7 @@ def test_generate_assets_writes_validator_compatible_registry(tmp_path: Path) ->
 
     written, summary = module.generate_assets(
         registration,
-        project / "manuscript" / "figures",
+        project / "docs" / "manuscript" / "figures",
         project / "output" / "figures",
         project / "output" / "data",
     )
@@ -70,7 +70,8 @@ def test_generate_assets_writes_validator_compatible_registry(tmp_path: Path) ->
         "fig:deviation_timeline",
         "fig:permutation_result",
     }
-    ok, issues = _validate_registry(registry, project / "manuscript")
+    assert all(record["metadata"]["alt_text"].strip() for record in payload["figures"])
+    ok, issues = _validate_registry(registry, project / "docs" / "manuscript")
     assert ok, issues
 
 
@@ -98,7 +99,7 @@ def test_validator_rejects_deleted_registered_figure(tmp_path: Path) -> None:
     project, registration = _copy_project_inputs(tmp_path)
     module.generate_assets(
         registration,
-        project / "manuscript" / "figures",
+        project / "docs" / "manuscript" / "figures",
         project / "output" / "figures",
         project / "output" / "data",
     )
@@ -106,7 +107,7 @@ def test_validator_rejects_deleted_registered_figure(tmp_path: Path) -> None:
 
     ok, issues = _validate_registry(
         project / "output" / "figures" / "figure_registry.json",
-        project / "manuscript",
+        project / "docs" / "manuscript",
     )
 
     assert not ok

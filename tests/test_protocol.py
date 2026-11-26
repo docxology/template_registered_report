@@ -209,7 +209,7 @@ def test_sensitivity_table_prose_matches_registered_analyses() -> None:
     findings = validate_sensitivity_table(frozen, rows)
     assert findings == ()
 
-    text = (PROJECT_ROOT / "manuscript" / "04_results.md").read_text(encoding="utf-8")
+    text = (PROJECT_ROOT / "docs" / "manuscript" / "04_results.md").read_text(encoding="utf-8")
     normalized = " ".join(text.split())
     for row in rows:
         assert str(row["name"]) in normalized
@@ -229,7 +229,7 @@ def test_deviation_ledger_prose_matches_live_ledger() -> None:
 
     ledger = build_deviation_ledger(frozen, executed, deviations)
     report = compare_analysis_to_registration(frozen, executed, deviations)
-    text = (PROJECT_ROOT / "manuscript" / "05_deviations.md").read_text(encoding="utf-8")
+    text = (PROJECT_ROOT / "docs" / "manuscript" / "05_deviations.md").read_text(encoding="utf-8")
 
     assert f"{report.integrity_score:.1f}" in text
     assert f"{report.integrity_score:.1f}" == "0.9"

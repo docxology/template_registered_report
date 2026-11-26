@@ -1,6 +1,6 @@
 # tests - template_registered_report
 
-Real-data, no-mock tests across four files:
+Real-data, no-mock tests cover the following:
 
 - `test_protocol.py` — registration freezing, section validation, deviation
   classification, sensitivity-table checks, review packets, and analysis-plan
@@ -19,9 +19,8 @@ Real-data, no-mock tests across four files:
   cannot publish a registry, and the validator rejects a deleted registered
   figure.
 
-Run from the repository root:
+- `test_generate_review_artifacts_script.py` — verifies the command-line
+  entry point, checks parity with direct library computation, and exercises a
+  missing-registration failure.
 
-```bash
-uv sync --extra dev
-uv run pytest tests --cov=src --cov-fail-under=90
-```
+See [setup and tests](../README.md#setup-and-tests) for the coverage command.

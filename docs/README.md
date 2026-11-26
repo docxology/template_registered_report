@@ -1,55 +1,42 @@
-# docs/ — template_registered_report
+# Registered report documentation
 
-Human entry point for this repository's documentation. The repo's own README.md
-remains the primary overview; this directory collects stable how-to and
-reference material.
+This exemplar demonstrates how to freeze a registered protocol, record
+deviations, and distinguish confirmatory findings from exploratory results.
+The included data and results come from a seeded demonstration.
 
-## What this repo is
+- [Standalone fork guide](standalone.md)
+- [Evidence generation and manuscript rendering](rendering.md)
+- [Manuscript and section map](manuscript/README.md)
+- [Registration and claims fixtures](reference/data.md)
+- [Generation scripts](reference/scripts.md)
+- [Python implementation](reference/implementation.md)
+- [Test coverage](reference/tests.md)
+- [Maintenance backlog](backlog.md)
 
-`template_registered_report` — a public exemplar for registered reports,
-preregistration, replication, and robustness-audit workflows. It makes the
-planned analysis, frozen hypothesis ledger, deviations, and post-run claims
-auditable.
+## Setup and tests
 
-## Repository layout (top level)
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run
+these commands from the repository root. The project selects Python 3.14 via
+`.python-version`.
+
+```sh
+uv sync --locked --extra dev
+uv run --no-sync pytest tests --cov=src --cov-fail-under=90
+```
+
+## Configuration and artifacts
 
 | Path | Role |
-|---|---|
-| `src/` | Project business logic |
-| `scripts/` | Thin orchestrators importing from `src/` |
-| `tests/` | Project test suite |
-| `manuscript/` | Registered-report sections (abstract → deviations → references), `config.yaml`, figures |
-| `output/` | Reproducibility bundle (tracked, like every other public exemplar) |
-| `data/` | Project data incl. `claim_ledger.yaml`, `example_registration.json` |
-| `docs/` | This documentation directory |
+| --- | --- |
+| [docs/manuscript/config.yaml](manuscript/config.yaml) | Render settings, authorship, and publication metadata |
+| [docs/manuscript/config.yaml.example](manuscript/config.yaml.example) | Starting metadata for forks |
+| [data/example_registration.json](../data/example_registration.json) | Preregistered hypotheses, outcomes, and analysis plan |
+| [data/claim_ledger.yaml](../data/claim_ledger.yaml) | Claim-to-evidence mapping |
+| [domain_profile.yaml](../domain_profile.yaml) and [experiment_plan.yaml](../experiment_plan.yaml) | Template domain and experiment settings |
+| [output/](../output/) | Committed reproducibility snapshot with generated evidence and rendered artifacts |
 
-## Running
-
-From this repository root (per root `README.md`):
-
-```bash
-uv sync --extra dev
-uv run pytest tests
-```
-
-Inside the template monorepo the same project runs from the monorepo root with
-`uv run python scripts/pipeline/stage_01_test.py --project templates/template_registered_report --project-only`.
-
-Forks: copy `manuscript/config.yaml.example` to `manuscript/config.yaml`.
-
-## Testing
-
-Project pytest config lives in `pyproject.toml` (`testpaths = ["tests"]`,
-`pythonpath = [".", "src"]`). From this repository root:
-
-```bash
-uv run pytest tests --cov=src --cov-fail-under=90
-```
-
-## Documentation maintenance
-
-Docs here are hand-maintained, short, and evidence-based: every factual claim
-traces to a repo file (README, AGENTS.md, config, source headers). Cross
-references to monorepo-level guides (`docs/`, `infrastructure/` at the template
-root) resolve only inside a full template checkout, not in this standalone
-checkout.
+The validator freezes plans with a deterministic hash, checks required sections,
+and compares executed analyses with registered outcomes. Registration schema v2
+migrates the earlier fixture without inventing missing values. The review packet
+records ethics and stage metadata, sensitivity checks, confirmatory and
+exploratory outcomes, and the receipt requirements for owner-gated publication.

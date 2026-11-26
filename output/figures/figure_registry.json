@@ -4,25 +4,37 @@
       "caption": "Registered analysis workflow and pre-results lock boundary.",
       "filename": "analysis_dag.png",
       "generated_by": "registered_report.figures.plot_analysis_dag",
-      "label": "fig:analysis_dag"
+      "label": "fig:analysis_dag",
+      "metadata": {
+        "alt_text": "Workflow boxes run from registration freeze to interpretation. A dashed line separates locked steps from post-results steps."
+      }
     },
     {
       "caption": "Timeline of registered decisions and documented deviations.",
       "filename": "deviation_timeline.png",
       "generated_by": "registered_report.figures.plot_deviation_timeline",
-      "label": "fig:deviation_timeline"
+      "label": "fig:deviation_timeline",
+      "metadata": {
+        "alt_text": "A timeline distinguishes registered steps, documented deviations, and undocumented deviations."
+      }
     },
     {
       "caption": "Registered hypothesis-to-outcome-to-analysis mapping.",
       "filename": "hypothesis_map.png",
       "generated_by": "registered_report.figures.plot_hypothesis_map",
-      "label": "fig:hypothesis_map"
+      "label": "fig:hypothesis_map",
+      "metadata": {
+        "alt_text": "A four-column flow links each registered hypothesis to its outcome, measure, and planned analysis."
+      }
     },
     {
       "caption": "Seeded permutation null distribution and observed registered statistic.",
       "filename": "permutation_result.png",
       "generated_by": "registered_report.figures.plot_permutation_result",
-      "label": "fig:permutation_result"
+      "label": "fig:permutation_result",
+      "metadata": {
+        "alt_text": "A histogram shows the permutation null distribution, with lines marking the observed treatment-control difference and its negative."
+      }
     }
   ],
   "schema_version": "template-registered-report-figure-registry-v1"
