@@ -30,7 +30,7 @@ that matches Pandoc. The linked release matches Pandoc 3.1.11.1.
 From the standalone checkout's root, run:
 
 ```sh
-registered_report_checkout="$PWD"
+registered_report_checkout="$(pwd -P)"
 git clone https://github.com/docxology/template.git ../registered-report-renderer
 cd ../registered-report-renderer
 git checkout --detach 87704feae0a4490ef7dad9c931d268e8c30273c2
